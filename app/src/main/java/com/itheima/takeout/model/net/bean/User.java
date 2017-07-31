@@ -1,6 +1,6 @@
 package com.itheima.takeout.model.net.bean;
 
-public class User {
+public class User {//网络请求的数据返回的解析的bean 对象区别于数据库的bean对象
 	
 	private int id;
 	private String name;

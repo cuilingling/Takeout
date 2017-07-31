@@ -3,8 +3,10 @@ package com.itheima.takeout.model.dao.bean;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 @DatabaseTable(tableName = "t_address")
-public class AddressBean {
+public class AddressBean implements  Serializable{
     @DatabaseField(generatedId = true)
     public int _id;
 
@@ -27,11 +29,12 @@ public class AddressBean {
     @DatabaseField(canBeNull = false)
     public double latitude;
 
-
-
     @DatabaseField(canBeNull = false,foreign = true,foreignColumnName = "_id",columnName = "user_id")
     public UserBean user;
 
+    public void setUser(UserBean user) {
+        this.user = user;
+    }
 
     public AddressBean() {
     }

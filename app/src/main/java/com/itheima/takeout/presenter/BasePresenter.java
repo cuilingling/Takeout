@@ -67,8 +67,6 @@ public abstract class BasePresenter {
                 }
 
             }
-
-
         }
 
         @Override

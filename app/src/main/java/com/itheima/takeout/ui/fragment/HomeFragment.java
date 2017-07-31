@@ -12,11 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.itheima.takeout.R;
+
 import com.itheima.takeout.dagger.conponent.fragment.DaggerHomeFragmentConponent;
 import com.itheima.takeout.dagger.conponent.fragment.HomeFragmentConponent;
 import com.itheima.takeout.dagger.module.fragment.HomeFragmentModule;
 import com.itheima.takeout.model.net.bean.HomeInfo;
 import com.itheima.takeout.presenter.fragment.HomeFragmentPresenter;
+import com.itheima.takeout.ui.adapter.HomefragmentAdapter;
 
 import javax.inject.Inject;
 
@@ -50,7 +52,7 @@ public class HomeFragment extends BaseFragment {
 
     @Inject
     HomeFragmentPresenter presenter;
-
+    private HomefragmentAdapter mAdapter;
 
 
     @Override
@@ -75,16 +77,17 @@ public class HomeFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvHome.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
+        //homefragment的适配器对象
+        mAdapter = new HomefragmentAdapter();
+        rvHome.setAdapter(mAdapter);
         rvHome.addOnScrollListener(listener);
 
     }
 
 
-
     @Override
     public void onResume() {
         super.onResume();
-
         presenter.getData();
         // 显示滚动条
     }
@@ -132,12 +135,14 @@ public class HomeFragment extends BaseFragment {
     }
 
 
-
     @OnClick(R.id.home_tv_address)
     public void onClick() {
 
     }
 
 
+    public HomefragmentAdapter getadapter() {
+        return mAdapter;
+    }
 
 }

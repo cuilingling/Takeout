@@ -53,7 +53,9 @@ public class HomeFragmentPresenter extends BasePresenter {
         // 解析数据：data
         Gson gson=new Gson();
         HomeInfo info = gson.fromJson(data, HomeInfo.class);
-        fragment.success(info);// 更新界面
+//        fragment.success(info);// 更新界面
+        //得到适配器将数据传输过去
+        fragment.getadapter().setData(info);
 
     }
 }
